@@ -12,3 +12,17 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model suppliers {
+  id            String @id @default(uuid())
+  name          String
+  logo          String
+  state         String
+  costPerKwh    Float
+  minKwhLimit   Float
+  totalClients  Int
+  averageRating Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
