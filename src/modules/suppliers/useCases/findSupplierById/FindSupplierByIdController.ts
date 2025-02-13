@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { FindSupplierByIdUseCase } from './findSupplierByIdUseCase';
+import { FindSupplierByIdUseCase } from './FindSupplierByIdUseCase';
 
 @Controller('suppliers')
 export class FindSupplierByIdController {

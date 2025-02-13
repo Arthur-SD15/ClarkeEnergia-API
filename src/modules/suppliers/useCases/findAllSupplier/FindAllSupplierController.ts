@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { FindAllSuppliersUseCase } from './findAllSupplierUseCase';
+import { FindAllSuppliersUseCase } from './FindAllSupplierUseCase';
 
 @Controller('suppliers')
 export class FindAllSuppliersController {
