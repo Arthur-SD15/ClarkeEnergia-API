@@ -25,6 +25,12 @@ export class SuppliersRepositoryPrisma implements ISuppliersRepository {
     });
   }
 
+  async findByName(name: string): Promise<Supplier | null> {
+    return this.prisma.suppliers.findFirst({
+      where: { name },
+    });
+  }
+
   async updateSupplier(id: string, updateSupplierDto: UpdateSupplierDto): Promise<Supplier> {
     return this.prisma.suppliers.update({
       where: { id },

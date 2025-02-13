@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsUUID, IsOptional, IsNotEmpty } from 'class-validator';
+import { IsString, IsNumber, IsUUID, IsOptional, IsDefined, IsNotEmpty } from 'class-validator';
 
 export class CreateSupplierDto {
     @IsString()
@@ -14,14 +14,18 @@ export class CreateSupplierDto {
     state: string;
 
     @IsNumber()
+    @IsNotEmpty()
     costPerKwh: number;
 
     @IsNumber()
+    @IsNotEmpty()
     minKwhLimit: number;
 
     @IsNumber()
+    @IsNotEmpty()
     totalClients: number;
 
     @IsNumber()
+    @IsNotEmpty()
     averageRating: number;
 }

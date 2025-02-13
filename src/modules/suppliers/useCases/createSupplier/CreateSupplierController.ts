@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { CreateSupplierUseCase } from './CreateSupplierUseCase';
 import { CreateSupplierDto } from '../../dtos/CreateSupplier';
 
@@ -7,7 +7,28 @@ export class CreateSupplierController {
   constructor(private readonly createSupplierUseCase: CreateSupplierUseCase) {}
 
   @Post()
-  async create(@Body() createSupplierDto: CreateSupplierDto) {
-    return this.createSupplierUseCase.execute(createSupplierDto);
+  async create(
+    @Body() {
+      name,
+      logo,
+      state,
+      costPerKwh,
+      minKwhLimit,
+      totalClients,
+      averageRating,
+    }: CreateSupplierDto,
+  ) {
+
+    const supplier = await this.createSupplierUseCase.execute({
+      name,
+      logo,
+      state,
+      costPerKwh,
+      minKwhLimit,
+      totalClients,
+      averageRating,
+    });
+
+    return supplier;
   }
 }
