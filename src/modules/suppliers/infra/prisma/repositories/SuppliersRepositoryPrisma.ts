@@ -25,6 +25,16 @@ export class SuppliersRepositoryPrisma implements ISuppliersRepository {
     });
   }
 
+  async findSupplierByConsumption(consumption: number): Promise<Supplier[]> {
+    return this.prisma.suppliers.findMany({
+      where: {
+        minKwhLimit: {
+          lt: consumption,
+        },
+      },
+    });
+  }
+
   async findByName(name: string): Promise<Supplier | null> {
     return this.prisma.suppliers.findFirst({
       where: { name },

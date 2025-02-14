@@ -5,11 +5,13 @@ import { FindAllSuppliersController } from './useCases/findAllSupplier/FindAllSu
 import { FindSupplierByIdController } from './useCases/findSupplierById/FindSupplierByIdController';
 import { UpdateSupplierController } from './useCases/updateSupplier/UpdateSupplierController';
 import { RemoveSupplierController } from './useCases/removeSupplier/RemoveSupplierController';
+import { FindSupplierByConsumptionController } from './useCases/findSupplierByConsumption/FindSupplierByConsumptionController';
 import { CreateSupplierUseCase } from './useCases/createSupplier/CreateSupplierUseCase';
 import { FindAllSuppliersUseCase } from './useCases/findAllSupplier/FindAllSupplierUseCase';
 import { FindSupplierByIdUseCase } from './useCases/findSupplierById/FindSupplierByIdUseCase';
 import { UpdateSupplierUseCase } from './useCases/updateSupplier/UpdateSupplierUseCase';
 import { RemoveSupplierUseCase } from './useCases/removeSupplier/RemoveSupplierUseCase';
+import { FindSupplierByConsumptionUseCase } from './useCases/findSupplierByConsumption/FindSupplierByConsumptionUseCase';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { RemoveSupplierUseCase } from './useCases/removeSupplier/RemoveSupplierU
   providers: [
     CreateSupplierUseCase,
     FindAllSuppliersUseCase,
+    FindSupplierByConsumptionUseCase,
     FindSupplierByIdUseCase,
     UpdateSupplierUseCase,
     RemoveSupplierUseCase,
@@ -25,6 +28,7 @@ import { RemoveSupplierUseCase } from './useCases/removeSupplier/RemoveSupplierU
   controllers: [
     CreateSupplierController,
     FindAllSuppliersController,
+    FindSupplierByConsumptionController,
     FindSupplierByIdController,
     UpdateSupplierController,
     RemoveSupplierController,
