@@ -1,4 +1,4 @@
-import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { CreateSupplierUseCase } from './CreateSupplierUseCase';
 import { CreateSupplierDto } from '../../dtos/CreateSupplier';
 
