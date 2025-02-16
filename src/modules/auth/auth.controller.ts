@@ -25,6 +25,6 @@ export class AuthController {
   @UseGuards(AuthGuard('google'))
   async googleAuthRedirect(@Request() req, @Res() res) {
     const token = await this.authRepository.generateToken(req.user);
-    res.redirect(`${process.env.CLIENT_URL}/login?token=${token.access_token}`);
+    res.redirect(`${process.env.CLIENT_URL}/?token=${token.access_token}`);
   }
 }
