@@ -10,6 +10,11 @@ async function bootstrap() {
     whitelist: true,
   }));
 
+  app.enableCors({
+    origin: process.env.CLIENT_URL,
+    allowedHeaders: 'Content-Type,Authorization',
+  });
+
   await app.listen(3000);
 }
 bootstrap();

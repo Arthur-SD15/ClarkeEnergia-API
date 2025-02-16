@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Request, UseGuards, Get, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Body, Request, UseGuards, Get, BadRequestException, Res } from '@nestjs/common';
 import { IAuthRepository } from './repositories/IAuthRepository';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -23,7 +23,8 @@ export class AuthController {
 
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
-  async googleAuthRedirect(@Request() req) {
-    return this.authRepository.generateToken(req.user);
+  async googleAuthRedirect(@Request() req, @Res() res) {
+    const token = await this.authRepository.generateToken(req.user);
+    res.redirect(`${process.env.CLIENT_URL}/login?token=${token.access_token}`);
   }
 }
