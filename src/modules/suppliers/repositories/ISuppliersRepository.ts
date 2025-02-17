@@ -4,7 +4,14 @@ import { UpdateSupplierDto } from '../dtos/UpdateSupplier';
 
 export abstract class ISuppliersRepository {
   abstract createSupplier(createSupplierDto: CreateSupplierDto): Promise<Supplier>;
-  abstract findSuppliers(): Promise<Supplier[]>;
+  abstract findAllSuppliers(
+    name?: string,
+    state?: string,
+    averageRating?: number,
+    costPerKwh?: number,
+    minKwhLimit?: number,
+    totalClients?: number,
+  ) : Promise<Supplier[]>;
   abstract findSupplierById(id: string): Promise<Supplier | null>;
   abstract findSupplierByConsumption(consumption: number): Promise<Supplier[]>;
   abstract findByName(name: string): Promise<Supplier | null>;

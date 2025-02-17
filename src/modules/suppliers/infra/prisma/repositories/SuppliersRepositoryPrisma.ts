@@ -15,8 +15,45 @@ export class SuppliersRepositoryPrisma implements ISuppliersRepository {
     });
   }
 
-  async findSuppliers(): Promise<Supplier[]> {
-    return this.prisma.suppliers.findMany();
+  async findAllSuppliers(
+    name?: string,
+    state?: string,
+    averageRating?: number,
+    costPerKwh?: number,
+    minKwhLimit?: number,
+    totalClients?: number,
+  ): Promise<Supplier[]> {
+    let whereCondition: any = {};
+  
+    if (name) {
+      whereCondition.name = { contains: name, mode: 'insensitive' };
+    }
+  
+    if (state) {
+      whereCondition.state = { contains: state, mode: 'insensitive' };
+    }
+  
+    if (averageRating) {
+      whereCondition.averageRating = { gte: averageRating };
+    }
+  
+    if (costPerKwh) {
+      whereCondition.costPerKwh = { lte: costPerKwh };
+    }
+  
+    if (minKwhLimit) {
+      whereCondition.minKwhLimit = { gte: minKwhLimit };
+    }
+  
+    if (totalClients) {
+      whereCondition.totalClients = { gte: totalClients };
+    }
+  
+    const suppliers = await this.prisma.suppliers.findMany({
+      where: whereCondition,
+    });
+  
+    return suppliers;
   }
 
   async findSupplierById(id: string): Promise<Supplier | null> {
