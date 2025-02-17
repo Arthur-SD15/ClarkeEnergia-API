@@ -76,6 +76,10 @@ No próximo tópico da documentação, irei detalhar as rotas e os métodos HTTP
 - *Endpoint:* `/suppliers`
     - **Método**: `POST`
         - **Descrição**: A requisição para criar um novo fornecedor exige que sejam enviados os dados necessários para a criação, com as seguintes validações: o nome do fornecedor não pode ser duplicado; o estado deve ser uma sigla válida de um estado brasileiro; a média de avaliação deve estar entre 1 e 5; o custo por KWh não pode ser inferior a 1; o limite mínimo de KWh não pode ser menor que 1; e o total de clientes não pode ser negativo. Caso algum desses critérios não seja atendido, será retornado um erro com a mensagem correspondente. Se todas as regras forem seguidas corretamente, o fornecedor será criado com sucesso.
+- *Endpoint:* `/suppliers`
+    - **Método**: `GET`
+        - **Descrição**: Retorna os dados dos fornecedores, filtrados com base no consumo informado. Filtra de acordo com o limite mínimo de energia de cada fornecedor.
+        - **Query**: `/suppliers?name=Fornecedor%20X&state=SP&averageRating=4.5&costPerKwh=0.45&minKwhLimit=300&totalClients=1500` para filtrar os dados, os respectivos valores devem ser informados com o tipo correto.
 - *Endpoint:* `/suppliers/by-consumption`
     - **Método**: `GET`
         - **Descrição**: Retorna os dados dos fornecedores, filtrados com base no consumo informado, onde filtra de acordo com o limite minimo de energia de cada fornecedor. A requisição exige que seja passado o parâmetro de consumption na query string. O valor de consumption deve ser maior que 0.
